@@ -27,6 +27,7 @@
                     <button class="btn btn-outline-secondary" @click='addElement' type="button" id="button-addon2">Add</button>
                   </div>
                 <div class="col-6">
+                    <h2>Still ongoing</h2>
                     <ul class="list-group">
                         <li class="list-group-item" v-for='(element,index) in myList'>{{element}}
                             <i class="far fa-trash-alt" @click='deleteElement(index)'></i>
@@ -34,9 +35,11 @@
                       </ul>
                 </div>
                 <div class="col-6">
+                    <h2 v-if="elementsInDeletionsList">Completed tasks are shown below</h2>
+                    <h2 v-else>I would complete at least one task, if I were you...</h2>
                     <ul class="list-group">
                         <li class="list-group-item" v-for='(deletedElement,index) in deletionsList'>{{deletedElement}}
-                            <i class="fas fa-minus-circle"></i>
+                            <i class="fas fa-minus-circle" @click='ultimateDeletion'></i>
                         </li>
                       </ul>
                 </div>

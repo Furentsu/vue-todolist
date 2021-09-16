@@ -20,16 +20,21 @@ const root = new Vue({
             'Cheese and Eggs.',
         ],
         deletionsList: [],
+        elementsInDeletionsList: false,
         newElement: '',
     },
     methods: {
         deleteElement: function(index) {
             this.deletionsList.push(this.myList[index]);
+            this.elementsInDeletionsList = true,
             this.myList.splice(index,1);
         },
         addElement: function() {
             this.myList.push(this.newElement);
             this.newElement = '';
+        },
+        ultimateDeletion: function(index) {
+            this.deletionsList.splice(index,1);
         }
     }
     // Hooks
