@@ -17,8 +17,26 @@
 </head>
 <body>
     <div id="root">
-        
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1>To Do List</h1>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" @keyup.enter='addElement' v-model='newElement' placeholder="Choose the element you want to add" aria-label="Recipient's username" aria-describedby="button-addon2">
+                    <button class="btn btn-outline-secondary" @click='addElement' type="button" id="button-addon2">Add</button>
+                  </div>
+                <div class="col-6">
+                    <ul class="list-group">
+                        <li class="list-group-item" v-for='(element,index) in myList'>{{element}}
+                            <i class="far fa-trash-alt" @click='deleteElement(index)'></i>
+                        </li>
+                      </ul>
+                </div>
+            </div>
+        </div>
     </div>
+    
 
     <script src="script.js"></script>
 </body>
