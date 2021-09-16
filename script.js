@@ -44,7 +44,9 @@ const root = new Vue({
         restoreElement: function(deletedElement,index) {
             this.deletionsList.splice(index,1);
             this.myList.push(deletedElement);
-
+            if (this.deletionsList.length == 0) {
+                this.elementsInDeletionsList = false;
+            }
         }
     }
     // Hooks
