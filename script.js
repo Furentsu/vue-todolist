@@ -35,6 +35,9 @@ const root = new Vue({
         },
         ultimateDeletion: function(index) {
             this.deletionsList.splice(index,1);
+            if (this.deletionsList.length == 0) {
+                this.elementsInDeletionsList = false;
+            }
         }
     }
     // Hooks
