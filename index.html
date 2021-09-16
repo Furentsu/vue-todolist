@@ -33,6 +33,13 @@
                         </li>
                       </ul>
                 </div>
+                <div class="col-6">
+                    <ul class="list-group">
+                        <li class="list-group-item" v-for='(deletedElement,index) in deletionsList'>{{deletedElement}}
+                            <i class="fas fa-minus-circle"></i>
+                        </li>
+                      </ul>
+                </div>
             </div>
         </div>
     </div>

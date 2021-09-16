@@ -19,14 +19,17 @@ const root = new Vue({
             'Frozen Foods.',
             'Cheese and Eggs.',
         ],
+        deletionsList: [],
         newElement: '',
     },
     methods: {
         deleteElement: function(index) {
+            this.deletionsList.push(this.myList[index]);
             this.myList.splice(index,1);
         },
         addElement: function() {
             this.myList.push(this.newElement);
+            this.newElement = '';
         }
     }
     // Hooks
