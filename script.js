@@ -5,6 +5,8 @@
 // Predisporre un input per aggiungere un nuovo item alla lista: digitando il tasto invio oppure 
 // ciccando su un pulsante, il testo digitato sarà aggiunto alla lista.
 
+//  Implementare anche il metodo restoreElement dopo, per rimettere un elemento completato nella lista dei todo.
+
 const root = new Vue({
     el: '#root',
     data: {
@@ -12,7 +14,7 @@ const root = new Vue({
             'Bread.',
             'Seafood.',
             'Pasta and Rice.',
-            'Oils and Salad Dressings, ',
+            'Oils and Salad Dressings. ',
             'Sauces and Condiments.',
             'Cereals and Breakfast Foods.',
             'Soups and Canned Goods.',
@@ -24,8 +26,8 @@ const root = new Vue({
         newElement: '',
     },
     methods: {
-        deleteElement: function(index) {
-            this.deletionsList.push(this.myList[index]);
+        deleteElement: function(element,index) {
+            this.deletionsList.push(element);
             this.elementsInDeletionsList = true,
             this.myList.splice(index,1);
         },
@@ -38,6 +40,11 @@ const root = new Vue({
             if (this.deletionsList.length == 0) {
                 this.elementsInDeletionsList = false;
             }
+        },
+        restoreElement: function(deletedElement,index) {
+            this.deletionsList.splice(index,1);
+            this.myList.push(deletedElement);
+
         }
     }
     // Hooks
