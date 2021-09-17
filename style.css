@@ -1,0 +1,16 @@
+
+.form-control:focus,
+.btn.btn-outline-success:focus {
+    border-color: hsl(177, 61%, 41%);
+    box-shadow: none;
+}
+
+.form-control,
+.btn.btn-outline-success {
+    border: 1px solid hsl(177, 61%, 41%);
+}
+
+.btn.btn-outline-success:hover {
+    background-color:  hsl(177, 61%, 41%);
+    color: white;
+}

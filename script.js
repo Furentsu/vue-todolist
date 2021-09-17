@@ -23,27 +23,36 @@ const root = new Vue({
         ],
         deletionsList: [],
         elementsInDeletionsList: false,
+        elementsInToDoList: true,
         newElement: '',
     },
     methods: {
+        addElement: function() {
+            if (this.newElement.trim().length > 0) {
+                this.myList.push(this.newElement);
+                this.elementsInToDoList = true;
+                this.newElement = '';
+            } 
+        },
         deleteElement: function(element,index) {
             this.deletionsList.push(element);
             this.elementsInDeletionsList = true,
             this.myList.splice(index,1);
-        },
-        addElement: function() {
-            this.myList.push(this.newElement);
-            this.newElement = '';
-        },
-        ultimateDeletion: function(index) {
-            this.deletionsList.splice(index,1);
-            if (this.deletionsList.length == 0) {
-                this.elementsInDeletionsList = false;
+            if (this.myList.length == 0) {
+                this.elementsInToDoList = false;
             }
         },
         restoreElement: function(deletedElement,index) {
             this.deletionsList.splice(index,1);
             this.myList.push(deletedElement);
+            if (this.deletionsList.length == 0) {
+                this.elementsInDeletionsList = false;
+            } else if (this.myList.length > 0) {
+                this.elementsInToDoList = true;
+            }
+        },
+        ultimateDeletion: function(index) {
+            this.deletionsList.splice(index,1);
             if (this.deletionsList.length == 0) {
                 this.elementsInDeletionsList = false;
             }
